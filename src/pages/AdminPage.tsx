@@ -6,13 +6,17 @@
  * - Toggle session status (active/inactive)
  * - View all registrations per session
  * - Export registrations to CSV
+ *
+ * Protected by Supabase Auth - requires login
  */
 
 import { useEffect, useState } from 'react'
 import { supabase, type Session } from '../lib/supabase'
+import type { User } from '@supabase/supabase-js'
 import { SessionsTable } from '../components/admin/SessionsTable'
 import { SessionForm } from '../components/admin/SessionForm'
 import { RegistrationsView } from '../components/admin/RegistrationsView'
+import { AdminLogin } from './AdminLogin'
 
 // Type for registration with session info
 export type RegistrationWithSession = {
@@ -30,6 +34,10 @@ export type RegistrationWithSession = {
 }
 
 export function AdminPage() {
+  // Auth state
+  const [user, setUser] = useState<User | null>(null)
+  const [authLoading, setAuthLoading] = useState(true)
+
   // State for sessions list
   const [sessions, setSessions] = useState<Session[]>([])
   const [loading, setLoading] = useState(true)
@@ -41,10 +49,28 @@ export function AdminPage() {
   // State for active tab
   const [activeTab, setActiveTab] = useState<'sessions' | 'registrations'>('sessions')
 
-  // Fetch all sessions on mount
+  // Check auth state on mount
   useEffect(() => {
-    fetchSessions()
+    // Get current session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null)
+      setAuthLoading(false)
+    })
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
   }, [])
+
+  // Fetch all sessions on mount (only if authenticated)
+  useEffect(() => {
+    if (user) {
+      fetchSessions()
+    }
+  }, [user])
 
   // Fetch sessions from Supabase
   async function fetchSessions() {
@@ -129,6 +155,28 @@ export function AdminPage() {
     await handleUpdateSession(id, { status: newStatus })
   }
 
+  // Logout
+  async function handleLogout() {
+    await supabase.auth.signOut()
+  }
+
+  // Show loading while checking auth
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-cream flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block w-8 h-8 border-2 border-terracotta/30 border-t-terracotta rounded-full animate-spin" />
+          <p className="mt-4 text-warm-gray">טוען...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Show login if not authenticated
+  if (!user) {
+    return <AdminLogin onLogin={() => {}} />
+  }
+
   return (
     <div className="min-h-screen bg-cream">
       {/* Header */}
@@ -143,12 +191,23 @@ export function AdminPage() {
                 ניהול מועדים והרשמות
               </p>
             </div>
-            <a
-              href="/"
-              className="text-terracotta hover:text-terracotta-dark transition-colors text-sm"
-            >
-              → חזרה לאתר
-            </a>
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-warm-gray-light hidden sm:block">
+                {user.email}
+              </span>
+              <button
+                onClick={handleLogout}
+                className="text-warm-gray hover:text-terracotta transition-colors text-sm"
+              >
+                התנתקות
+              </button>
+              <a
+                href="/"
+                className="text-terracotta hover:text-terracotta-dark transition-colors text-sm"
+              >
+                → חזרה לאתר
+              </a>
+            </div>
           </div>
         </div>
       </header>
