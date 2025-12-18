@@ -7,7 +7,7 @@ export function Header() {
           className="inline-block group"
         >
           <span className="font-serif text-2xl md:text-3xl font-semibold text-warm-brown tracking-wide group-hover:text-terracotta transition-colors duration-300">
-            סדנאות יצירה
+            ארט חייט - מרכז אומנויות
           </span>
           <span className="block text-sm text-warm-gray-light mt-0.5 font-light tracking-wide">
             סדנאות קטנות עם ליווי אישי

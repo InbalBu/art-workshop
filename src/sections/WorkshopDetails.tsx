@@ -34,13 +34,15 @@ export function WorkshopDetails() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-14">
           <span className="text-dusty-rose font-medium text-sm tracking-widest uppercase">
-            על הסדנה
+            מה מחכה לכם
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-semibold text-warm-brown mt-3">
             מה קורה בסדנה
           </h2>
           <p className="mt-4 text-warm-gray max-w-xl mx-auto leading-relaxed">
-            סדנה של כמה שעות, להתנסות, ליצור וללמוד בקצב שלכם, בלי לחץ.
+            כמה שעות של התנסות ויצירה, בקצב רגוע ובאווירה נעימה.
+            <br></br>
+            בלי ידע מוקדם, בלי לחץ — פשוט להגיע וליצור.
           </p>
         </div>
 

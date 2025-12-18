@@ -19,6 +19,7 @@ export function Hero() {
 
         <p className="mt-8 text-lg md:text-xl text-warm-gray leading-relaxed max-w-2xl">
           סדנאות קטנות שבהן עובדים עם הידיים ויוצאים עם משהו שעשיתם בעצמכם.
+          <br></br>
           אין צורך בניסיון קודם.
         </p>
 
@@ -33,7 +34,7 @@ export function Hero() {
             href="#about"
             className="inline-flex items-center px-8 py-4 bg-cream-dark text-warm-brown font-medium rounded-full hover:bg-cream-dark/80 transition-all duration-300"
           >
-            קצת עליי
+            קצת עלינו
           </a>
         </div>
       </div>

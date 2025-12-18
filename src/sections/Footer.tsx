@@ -7,7 +7,7 @@ export function Footer() {
           {/* Logo/Brand */}
           <a href="/" className="inline-block group mb-6">
             <span className="font-serif text-2xl font-semibold text-warm-brown group-hover:text-terracotta transition-colors duration-300">
-              סדנאות יצירה
+              ארט חייט - מרכז אומנויות
             </span>
           </a>
 
@@ -15,12 +15,13 @@ export function Footer() {
           <p className="text-warm-gray leading-relaxed">
             שאלות או בקשות? אפשר לכתוב ל־
             <a
-              href="mailto:info@workshop.co.il"
+              href="mailto:artchayat@gmail.com"
               className="text-terracotta hover:text-terracotta-dark transition-colors duration-200 font-medium"
             >
-              info@workshop.co.il
+              artchayat@gmail.com
             </a>
-            . נשמח לחזור אליכם בהקדם.
+            <br></br>
+            נשמח לחזור אליכם בהקדם.
           </p>
 
           {/* Decorative divider */}
