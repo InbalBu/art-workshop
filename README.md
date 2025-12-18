@@ -1,73 +1,118 @@
-# React + TypeScript + Vite
+# 🎨 Creative Workshops – Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A warm, artistic landing page for creative workshops, designed for a Hebrew (RTL) audience.  
+The site presents upcoming workshops, allows simple registration, and enables easy, non-technical management through Supabase.
 
-Currently, two official plugins are available:
+Built with a strong focus on human-centered design, simplicity, and long-term maintainability.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Project Goals
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Present creative workshops in a calm, inviting, non-salesy way  
+- Allow visitors to register easily without friction  
+- Enable workshop hosts to manage dates and availability independently  
+- Maintain a warm, handmade aesthetic (not a generic “AI-looking” product)  
+- Deliver a production-ready, scalable frontend architecture
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🖌️ Design & UX
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Warm, artistic, human-centered design  
+- Soft serif typography for headings  
+- Natural color palette (terracotta, sage, cream tones)  
+- Full Hebrew + RTL support  
+- Subtle shadows, rounded cards, gentle hover states  
+- Fully responsive (mobile-first)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🧩 Features
+
+- **Full landing page**  
+  - Hero  
+  - About  
+  - Workshop Details  
+  - What’s Included  
+  - Schedule  
+  - Registration  
+  - Footer  
+
+- **Dynamic workshop schedule**
+  - Data fetched from Supabase
+  - Displays date, time, location
+  - Shows remaining seats
+  - Automatically marks sessions as “Full”
+
+- **Registration flow**
+  - Checks seat availability
+  - Inserts registration into database
+  - Decreases available seats
+  - User-friendly success / error messages (Hebrew)
+
+- **Prepared for future expansion**
+  - Admin dashboard
+  - Email automation
+  - Authentication
+  - Advanced workshop management
+
+---
+
+## 🛠️ Tech Stack
+
+- **React + TypeScript**
+- **Vite**
+- **Tailwind CSS**
+- **Supabase**
+  - Database
+  - Client SDK
+- **Netlify** (deployment)
+
+---
+
+## 📦 Project Structure
+
+```txt
+src/
+├── sections/
+│   ├── Hero.tsx
+│   ├── About.tsx
+│   ├── WorkshopDetails.tsx
+│   ├── WhatIsIncluded.tsx
+│   ├── Schedule.tsx
+│   ├── Registration.tsx
+│   └── Footer.tsx
+├── lib/
+│   └── supabase.ts
+├── App.tsx
+└── main.tsx
+
 ```
+## 🗄️ Database Schema (Supabase)
+**sessions**
+- id (uuid)
+- date (text)
+- time (text)
+- location (text)
+- max_seats (int)
+- seats_left (int)
+- status (text)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**registrations**
+- id (uuid)
+- session_id (uuid)
+- name (text)
+- email (text)
+- message (text)
+- created_at (timestamp)
+- status (text)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ❤️ Notes
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This project was built with a strong focus on:
+- Learning by doing
+- Clean, maintainable architecture
+- Real-world production practices
+- A genuinely human user experience
+
