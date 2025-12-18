@@ -19,7 +19,7 @@ export function Hero() {
 
         <p className="mt-8 text-lg md:text-xl text-warm-gray leading-relaxed max-w-2xl">
           סדנאות קטנות שבהן עובדים עם הידיים ויוצאים עם משהו שעשיתם בעצמכם.
-          <br></br>
+          <br />
           אין צורך בניסיון קודם.
         </p>
 

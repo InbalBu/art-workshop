@@ -1,3 +1,5 @@
+import whatIsIncludedImage from '../assets/images/whatIsIncluded.jpeg'
+
 export function WhatIsIncluded() {
   const inclusions = [
     {
@@ -68,30 +70,16 @@ export function WhatIsIncluded() {
             </ul>
           </div>
 
-          {/* Decorative illustration placeholder */}
+          {/* Image */}
           <div className="hidden md:block">
             <div className="relative">
-              <div className="aspect-square bg-cream-dark/50 rounded-3xl p-8 flex items-center justify-center">
-                <div className="text-center">
-                  <svg
-                    className="w-24 h-24 mx-auto text-terracotta/25"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={0.75}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                    />
-                  </svg>
-                  <p className="mt-4 text-warm-gray-light text-sm">אווירה חמה ומזמינה</p>
-                </div>
-              </div>
-              {/* Floating decorative elements */}
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-dusty-rose/30 rounded-full" />
               <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-sage/30 rounded-full" />
+              <img
+                src={whatIsIncludedImage}
+                alt="אווירה חמה ומזמינה בסדנה"
+                className="rounded-3xl shadow-lg w-full aspect-square object-cover"
+              />
             </div>
           </div>
         </div>
