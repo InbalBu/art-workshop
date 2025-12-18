@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Heebo', system-ui, sans-serif;
+  --font-serif: 'Secular One', sans-serif;
+  --font-sans: 'Varela Round', system-ui, sans-serif;
 
   --color-cream: #FDF8F3;
   --color-cream-dark: #F5EDE4;
